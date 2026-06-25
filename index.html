@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reflections on Faith | Pastor Andrew C. Phiri</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts for Professional Spiritual Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2 family=Cinzel:wght@500;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Cinzel', 'serif'],
+          },
+          colors: {
+            brand: {
+              dark: '#05070c',
+              card: '#0c101b',
+              accent: '#E5BA73', // Ancient Warm Gold
+              accentHover: '#C59B53',
+              goldLight: '#F3E5D8',
+              glow: 'rgba(229, 186, 115, 0.12)'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #05070c;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #172030;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #E5BA73;
+    }
+    /* Animated audio equalizer */
+    .eq-bar {
+      width: 3px;
+      height: 100%;
+      background-color: #E5BA73;
+      animation: bounce 1s ease-in-out infinite alternate;
+    }
+    .eq-bar:nth-child(2) { animation-delay: 0.2s; }
+    .eq-bar:nth-child(3) { animation-delay: 0.4s; }
+    .eq-bar:nth-child(4) { animation-delay: 0.1s; }
+    @keyframes bounce {
+      0% { height: 15%; }
+      100% { height: 100%; }
+    }
+  </style>
+</head>
+<body class="bg-brand-dark text-gray-200 font-sans min-h-screen flex flex-col pb-28">
+
+  <!-- TOP LIVESTREAM ANNOUNCEMENT BANNER -->
+  <div id="livestream-banner" class="bg-gradient-to-r from-amber-950 to-amber-900 px-4 py-2.5 text-center text-xs sm:text-sm font-semibold text-white relative transition-all duration-300 shadow-lg">
+    <div class="max-w-7xl mx-auto flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
+      <span class="flex h-2 w-2 relative">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+      </span>
+      <span><strong>ACTIVE FOCUS:</strong> Detailed exegesis of Leviticus 23 "Feasts of Jehovah" is fully updated.</span>
+      <button onclick="playSermon('sermon-1')" class="bg-white text-amber-950 px-3 py-1 rounded-full text-xs font-bold hover:bg-amber-100 transition-all uppercase tracking-wider">
+        Listen to Overview
+      </button>
+    </div>
+    <button onclick="document.getElementById('livestream-banner').classList.add('hidden')" class="absolute right-4 top-2 text-white/70 hover:text-white">
+      <i data-lucide="x" class="w-4 h-4"></i>
+    </button>
+  </div>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="border-b border-gray-900 bg-brand-dark/95 sticky top-0 z-40 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-full bg-gradient-to-br from-brand-accent to-amber-600 flex items-center justify-center text-brand-dark font-black text-xl shadow-lg shadow-brand-accent/20 group-hover:scale-105 transition-transform">
+          RF
+        </div>
+        <div>
+          <span class="block font-serif text-xl tracking-widest text-white group-hover:text-brand-accent transition-colors font-bold uppercase">Reflections on Faith</span>
+          <span class="block text-[10px] text-gray-400 tracking-widest font-semibold uppercase">PASTOR ANDREW C. PHIRI</span>
+        </div>
+      </a>
+
+      <!-- Desktop Links -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="#about" class="text-gray-300 hover:text-brand-accent transition-colors">About</a>
+        <a href="#sermons" class="text-gray-300 hover:text-brand-accent transition-colors">Sermons Hub</a>
+        <a href="#publications" class="text-gray-300 hover:text-brand-accent transition-colors">Books & Papers</a>
+        <a href="#prayer-wall" class="text-gray-300 hover:text-brand-accent transition-colors font-semibold flex items-center gap-1.5 bg-brand-accent/10 border border-brand-accent/20 px-3 py-1 rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-brand-accent animate-pulse"></span> Prayer Wall</a>
+        <div class="flex items-center gap-2 bg-slate-900 border border-slate-850 px-3.5 py-1.5 rounded-lg text-xs">
+          <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+          <span class="text-gray-400">Syncing Active Studies...</span>
+        </div>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button onclick="toggleMobileMenu()" class="md:hidden text-gray-300 hover:text-brand-accent p-2">
+        <i id="menu-icon" data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-900 bg-brand-dark py-4 px-6 space-y-4 shadow-2xl">
+      <a href="#about" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-brand-accent text-base py-1">About</a>
+      <a href="#sermons" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-brand-accent text-base py-1">Sermons Hub</a>
+      <a href="#publications" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-brand-accent text-base py-1">Books & Papers</a>
+      <a href="#prayer-wall" onclick="toggleMobileMenu()" class="block text-brand-accent hover:text-white text-base py-1 font-semibold">Prayer Wall</a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative bg-gradient-to-b from-[#080b13] via-brand-dark to-brand-dark py-20 lg:py-32 overflow-hidden border-b border-gray-950">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(229,186,115,0.06)_0%,transparent_70%)] pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+        <span class="inline-flex items-center gap-2 bg-brand-accent/10 border border-brand-accent/20 text-brand-accent px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase shadow-sm">
+          <i data-lucide="compass" class="w-3.5 h-3.5"></i> Systematic Bible Exposition
+        </span>
+        <h1 class="font-serif text-4xl sm:text-5xl lg:text-6.5xl font-extrabold tracking-tight text-white leading-tight">
+          Expository sermons, <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-amber-500">covenant history</span> & apostolic truth
+        </h1>
+        <p class="text-gray-400 text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed font-light">
+          Access a comprehensive digital archive of teachings, outlines, and books curated by Pastor Andrew C. Phiri (Believers' Assembly, Zambia). Delve into the scriptures where structural evidence leads.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+          <a href="#sermons" class="bg-brand-accent text-brand-dark hover:bg-brand-accentHover font-semibold py-3.5 px-8 rounded-xl shadow-lg shadow-brand-accent/20 flex items-center justify-center gap-2 transition-all">
+            <i data-lucide="book-open" class="w-5 h-5"></i> Enter Sermons Vault
+          </a>
+          <a href="#publications" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 text-gray-200 font-semibold py-3.5 px-8 rounded-xl flex items-center justify-center gap-2 transition-all">
+            <i data-lucide="headphones" class="w-5 h-5"></i> Open Audio Catalogue
+          </a>
+        </div>
+      </div>
+
+      <!-- Featured Study Card -->
+      <div class="lg:col-span-5 bg-gradient-to-b from-[#0c1221] to-[#060912] border border-slate-800/85 p-8 rounded-3xl relative overflow-hidden shadow-2xl hover:border-brand-accent/30 transition-all duration-300">
+        <div class="absolute top-0 right-0 bg-brand-accent/10 border-l border-b border-brand-accent/20 px-4 py-1 rounded-bl-xl text-brand-accent text-xs font-bold tracking-wider uppercase">
+          LATEST ADDITION
+        </div>
+        <span class="text-xs text-brand-accent font-semibold tracking-wider block uppercase mb-2">Featured Series</span>
+        <h3 class="text-white font-serif text-xl sm:text-2xl font-bold leading-snug mb-3">
+          The Gospel of Jesus Christ: The Resurrection Seal
+        </h3>
+        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+          Evaluating historical evidence, scriptural markers, and apostolic precedents proving the resurrection as the ultimate seal on the New Covenant.
+        </p>
+        <div class="space-y-4 border-t border-gray-800/60 pt-6">
+          <div class="flex items-center justify-between text-xs text-gray-400">
+            <span class="flex items-center gap-1.5"><i data-lucide="calendar" class="w-3.5 h-3.5 text-brand-accent"></i> June 2026 Edition</span>
+            <span class="flex items-center gap-1.5"><i data-lucide="user" class="w-3.5 h-3.5 text-brand-accent"></i> Pastor Andrew C. Phiri</span>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="playSermon('sermon-1')" class="flex-1 bg-brand-accent text-brand-dark hover:bg-brand-accentHover font-bold py-3 px-4 rounded-xl text-xs transition-all duration-300 flex items-center justify-center gap-2 shadow-md shadow-brand-accent/10">
+              <i data-lucide="play" class="w-4 h-4 fill-brand-dark"></i> Listen to Dialogue
+            </button>
+            <a href="https://andrewcphiri.com/wp-content/uploads/2026/06/The-Gospel-of-Jesus-Christ-The-Resurrection-Seal-part-c.mp3" download class="bg-slate-800 hover:bg-slate-700 text-gray-300 p-3 rounded-xl transition-all" title="Download Reference Audio">
+              <i data-lucide="download" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SERMONS HUB -->
+  <section id="sermons" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-20">
+    <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+      <span class="text-brand-accent text-sm font-bold tracking-widest uppercase">EXPOSITORY AUDIO CATALOGUE</span>
+      <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white">Sermons & Exegesis Archives</h2>
+      <p class="text-gray-400">
+        Review current and past theological seminar feeds compiled and categorized for fast scriptural lookup.
+      </p>
+
+      <!-- Category Filter Tabs -->
+      <div class="flex flex-wrap justify-center gap-2 pt-6">
+        <button onclick="filterCategory('all')" id="filter-all" class="category-btn active px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-brand-accent text-brand-dark">
+          All Audio Records
+        </button>
+        <button onclick="filterCategory('gospel')" id="filter-gospel" class="category-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-slate-900 border border-slate-800 text-gray-400 hover:bg-slate-800 hover:text-white">
+          Gospel & Resurrection
+        </button>
+        <button onclick="filterCategory('leadership')" id="filter-leadership" class="category-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-slate-900 border border-slate-800 text-gray-400 hover:bg-slate-800 hover:text-white">
+          Leadership & Moses
+        </button>
+        <button onclick="filterCategory('mercy')" id="filter-mercy" class="category-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-slate-900 border border-slate-800 text-gray-400 hover:bg-slate-800 hover:text-white">
+          Covenants of Mercy
+        </button>
+      </div>
+    </div>
+
+    <!-- Dynamic Cards Container -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- Card 1 -->
+      <div class="sermon-card bg-brand-card border border-slate-900 rounded-2xl p-6 flex flex-col justify-between hover:border-brand-accent/30 transition-all duration-300 shadow-xl group" data-category="gospel">
+        <div>
+          <div class="flex justify-between items-center mb-4">
+            <span class="bg-amber-950/40 text-brand-accent border border-brand-accent/20 text-[10px] uppercase font-bold px-2.5 py-1 rounded-full">Exegesis Focus</span>
+            <span class="text-xs text-gray-500">Part C</span>
+          </div>
+          <h3 class="text-white font-serif text-lg font-bold group-hover:text-brand-accent transition-colors mb-2">The Gospel: The Resurrection Seal</h3>
+          <p class="text-gray-400 text-xs leading-relaxed line-clamp-3 mb-4">A critical validation of biblical resurrection proofs, emphasizing why early historical records match New Testament claims.</p>
+        </div>
+        <div class="border-t border-gray-900 pt-4 mt-4 space-y-3">
+          <div class="flex justify-between text-[11px] text-gray-500">
+            <span>June 14, 2026</span>
+            <span>Study Segment</span>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="playSermon('sermon-1')" class="flex-1 bg-brand-accent text-brand-dark hover:bg-brand-accentHover font-semibold py-2 rounded-xl text-xs transition-colors flex items-center justify-center gap-1.5">
+              <i data-lucide="play" class="w-3.5 h-3.5 fill-brand-dark"></i> Listen Now
+            </button>
+            <button onclick="showResources('sermon-1')" class="bg-slate-900 hover:bg-slate-800 text-gray-400 hover:text-white p-2 rounded-xl transition-all border border-slate-800" title="Examine Resources">
+              <i data-lucide="layers" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="sermon-card bg-brand-card border border-slate-900 rounded-2xl p-6 flex flex-col justify-between hover:border-brand-accent/30 transition-all duration-300 shadow-xl group" data-category="gospel">
+        <div>
+          <div class="flex justify-between items-center mb-4">
+            <span class="bg-amber-950/40 text-brand-accent border border-brand-accent/20 text-[10px] uppercase font-bold px-2.5 py-1 rounded-full">Historical Proof</span>
+            <span class="text-xs text-gray-500">Part A</span>
+          </div>
+          <h3 class="text-white font-serif text-lg font-bold group-hover:text-brand-accent transition-colors mb-2">The Resurrection of Jesus Christ</h3>
+          <p class="text-gray-400 text-xs leading-relaxed line-clamp-3 mb-4">Unpacking archaeological validations, secular Roman testimonies, and corresponding scripture patterns of the empty tomb.</p>
+        </div>
+        <div class="border-t border-gray-900 pt-4 mt-4 space-y-3">
+          <div class="flex justify-between text-[11px] text-gray-500">
+            <span>June 10, 2026</span>
+            <span>Historical Series</span>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="playSermon('sermon-2')" class="flex-1 bg-brand-accent text-brand-dark hover:bg-brand-accentHover font-semibold py-2 rounded-xl text-xs transition-colors flex items-center justify-center gap-1.5">
+              <i data-lucide="play" class="w-3.5 h-3.5 fill-brand-dark"></i> Listen Now
+            </button>
+            <button onclick="showResources('sermon-2')" class="bg-slate-900 hover:bg-slate-800 text-gray-400 hover:text-white p-2 rounded-xl transition-all border border-slate-800" title="Examine Resources">
+              <i data-lucide="layers" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="sermon-card bg-brand-card border border-slate-900 rounded-2xl p-6 flex flex-col justify-between hover:border-brand-accent/30 transition-all duration-300 shadow-xl group" data-category="leadership">
+        <div>
+          <div class="flex justify-between items-center mb-4">
+            <span class="bg-amber-950/40 text-brand-accent border border-brand-accent/20 text-[10px] uppercase font-bold px-2.5 py-1 rounded-full">Leadership Studies</span>
+            <span class="text-xs text-gray-500">Part 6</span>
+          </div>
+          <h3 class="text-white font-serif text-lg font-bold group-hover:text-brand-accent transition-colors mb-2">Moses and Leadership: Strongholds & Discord</h3>
+          <p class="text-gray-400 text-xs leading-relaxed line-clamp-3 mb-4">Reviewing critical interactions between old covenant administration, spiritual fatigue, and managing household rebellions.</p>
+        </div>
+        <div class="border-t border-gray-900 pt-4 mt-4 space-y-3">
+          <div class="flex justify-between text-[11px] text-gray-500">
+            <span>April 12, 2026</span>
+            <span>Governance Series</span>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="playSermon('sermon-3')" class="flex-1 bg-brand-accent text-brand-dark hover:bg-brand-accentHover font-semibold py-2 rounded-xl text-xs transition-colors flex items-center justify-center gap-1.5">
+              <i data-lucide="play" class="w-3.5 h-3.5 fill-brand-dark"></i> Listen Now
+            </button>
+            <button onclick="showResources('sermon-3')" class="bg-slate-900 hover:bg-slate-800 text-gray-400 hover:text-white p-2 rounded-xl transition-all border border-slate-800" title="Examine Resources">
+              <i data-lucide="layers" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STUDY PAPERS & PUBLICATIONS -->
+  <section id="publications" class="py-24 bg-brand-card border-y border-gray-950 scroll-mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+        <div class="space-y-4">
+          <span class="text-brand-accent text-sm font-bold tracking-widest uppercase">PRINTED EXPOSITIONS</span>
+          <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white">Featured Exegesis Notebooks</h2>
+          <p class="text-gray-400 max-w-2xl text-sm font-light">
+            Read selected digital previews of research outlines curated directly within the Reflections on Faith portal.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Book Card 1 -->
+        <div class="bg-brand-dark/50 border border-slate-900 rounded-2xl p-6 hover:border-brand-accent/30 transition-all flex gap-6">
+          <div class="w-24 h-36 bg-gradient-to-br from-amber-950 to-slate-950 rounded-lg flex-shrink-0 flex items-center justify-center p-3 text-center border border-amber-900/40 shadow-lg">
+            <span class="font-serif text-[10px] font-bold text-amber-200">Sufficient Reason & Design</span>
+          </div>
+          <div class="flex flex-col justify-between">
+            <div>
+              <h4 class="text-white font-serif text-base font-bold mb-1">Scientific Design Patterns</h4>
+              <p class="text-[11px] text-brand-accent font-medium mb-2">Discourse & Exegesis</p>
+              <p class="text-gray-400 text-xs line-clamp-3">Evaluating biological networks, cellular code structures, and logical frameworks suggesting creation design.</p>
+            </div>
+            <button onclick="openBookModal('book-1')" class="text-brand-accent hover:text-white text-xs font-semibold flex items-center gap-1 mt-3">
+              Read Selected Excerpt <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Book Card 2 -->
+        <div class="bg-brand-dark/50 border border-slate-900 rounded-2xl p-6 hover:border-brand-accent/30 transition-all flex gap-6">
+          <div class="w-24 h-36 bg-gradient-to-br from-indigo-950 to-slate-950 rounded-lg flex-shrink-0 flex items-center justify-center p-3 text-center border border-indigo-900/40 shadow-lg">
+            <span class="font-serif text-[10px] font-bold text-indigo-200">The Scriptural Standard</span>
+          </div>
+          <div class="flex flex-col justify-between">
+            <div>
+              <h4 class="text-white font-serif text-base font-bold mb-1">Hearing a Voice & The Voice</h4>
+              <p class="text-[11px] text-indigo-400 font-medium mb-2">Apostolic Precedent</p>
+              <p class="text-gray-400 text-xs line-clamp-3">Separating individual spiritual projections from systematic canonical verification structures.</p>
+            </div>
+            <button onclick="openBookModal('book-2')" class="text-brand-accent hover:text-white text-xs font-semibold flex items-center gap-1 mt-3">
+              Read Selected Excerpt <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Book Card 3 -->
+        <div class="bg-brand-dark/50 border border-slate-900 rounded-2xl p-6 hover:border-brand-accent/30 transition-all flex gap-6">
+          <div class="w-24 h-36 bg-gradient-to-br from-rose-950 to-slate-950 rounded-lg flex-shrink-0 flex items-center justify-center p-3 text-center border border-rose-900/40 shadow-lg">
+            <span class="font-serif text-[10px] font-bold text-rose-200">Relational Covenants</span>
+          </div>
+          <div class="flex flex-col justify-between">
+            <div>
+              <h4 class="text-white font-serif text-base font-bold mb-1">The Joy of Marriage</h4>
+              <p class="text-[11px] text-rose-400 font-medium mb-2">Domestic Order</p>
+              <p class="text-gray-400 text-xs line-clamp-3">Evaluating compatibility metrics, shared scripture studies, and domestic exegesis parameters.</p>
+            </div>
+            <button onclick="openBookModal('book-3')" class="text-brand-accent hover:text-white text-xs font-semibold flex items-center gap-1 mt-3">
+              Read Selected Excerpt <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY PRAYER WALL -->
+  <section id="prayer-wall" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 scroll-mt-20">
+    
+    <!-- Submission Panel -->
+    <div class="lg:col-span-5 bg-brand-card border border-slate-900 p-8 rounded-3xl space-y-6">
+      <div class="space-y-2">
+        <span class="text-brand-accent text-xs font-bold tracking-widest uppercase">REAL-TIME FELLOWSHIP</span>
+        <h3 class="text-2xl font-serif font-bold text-white">United in Intercession</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">
+          Submit prayer petitions anonymously or using initials. This wall connects you directly with our fellowship network.
+        </p>
+      </div>
+
+      <form id="prayer-form" onsubmit="submitPrayerRequest(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Curator or Initials</label>
+          <input type="text" id="prayer-name" placeholder="e.g. Sister Grace M." required class="w-full bg-brand-dark border border-slate-900 focus:border-brand-accent rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition-all">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Study Group / Assembly</label>
+          <input type="text" id="prayer-location" placeholder="e.g. Kabwe, ZM" required class="w-full bg-brand-dark border border-slate-900 focus:border-brand-accent rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition-all">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Request Petition</label>
+          <textarea id="prayer-content" rows="4" placeholder="Share your scriptural request details..." required class="w-full bg-brand-dark border border-slate-900 focus:border-brand-accent rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition-all"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-brand-accent text-brand-dark hover:bg-brand-accentHover font-bold py-3.5 rounded-xl text-sm transition-all flex items-center justify-center gap-2 shadow-md shadow-brand-accent/10">
+          <i data-lucide="plus-circle" class="w-4 h-4"></i> Publish to Study Wall
+        </button>
+      </form>
+    </div>
+
+    <!-- Live Board Feed -->
+    <div class="lg:col-span-7 space-y-6">
+      <div class="flex items-center justify-between border-b border-gray-900 pb-4">
+        <h3 class="text-xl font-serif font-bold text-white">Active Fellowship Requests</h3>
+        <span class="text-xs text-brand-accent bg-brand-accent/10 px-3 py-1 rounded-full font-semibold" id="connection-status">Synced</span>
+      </div>
+
+      <div id="prayer-requests-container" class="space-y-4 max-h-[520px] overflow-y-auto pr-2">
+        <div class="text-center py-12 text-gray-500 text-sm">
+          <i data-lucide="loader" class="w-6 h-6 animate-spin mx-auto mb-2 text-brand-accent"></i>
+          Loading study wall requests...
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STUDY EVENTS -->
+  <section id="events" class="py-24 bg-brand-card border-t border-gray-950 scroll-mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+        <span class="text-brand-accent text-sm font-bold tracking-widest uppercase">FELLOWSHIP TIMELINE</span>
+        <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white">Assembly Calendar</h2>
+        <p class="text-gray-400">Join our scheduled interactive sessions live or online.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="bg-brand-dark border border-slate-900 rounded-2xl p-6 flex gap-6 hover:border-brand-accent/20 transition-all">
+          <div class="flex flex-col items-center justify-center bg-brand-accent/10 text-brand-accent border border-brand-accent/20 rounded-xl px-4 py-3 text-center h-24 w-20 flex-shrink-0">
+            <span class="text-2xl font-bold font-serif">29</span>
+            <span class="text-xs uppercase font-semibold tracking-wider">Sep</span>
+          </div>
+          <div>
+            <span class="bg-amber-950 text-amber-400 text-[10px] uppercase font-bold px-2 py-0.5 rounded-full">Annual Convocation</span>
+            <h4 class="text-white font-serif text-lg font-bold mt-2">2026 Fall Exegesis Summit</h4>
+            <div class="flex items-center gap-4 text-[11px] text-gray-500 mt-4">
+              <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> Headquarters Assembly</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-brand-dark border border-slate-900 rounded-2xl p-6 flex gap-6 hover:border-brand-accent/20 transition-all">
+          <div class="flex flex-col items-center justify-center bg-indigo-950/40 text-indigo-400 border border-indigo-900/40 rounded-xl px-4 py-3 text-center h-24 w-20 flex-shrink-0">
+            <span class="text-2xl font-bold font-serif">10</span>
+            <span class="text-xs uppercase font-semibold tracking-wider">Jul</span>
+          </div>
+          <div>
+            <span class="bg-indigo-950 text-indigo-400 text-[10px] uppercase font-bold px-2 py-0.5 rounded-full">Study Seminar</span>
+            <h4 class="text-white font-serif text-lg font-bold mt-2">The Resurrection Covenant Exegesis</h4>
+            <div class="flex items-center gap-4 text-[11px] text-gray-500 mt-4">
+              <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5"></i> Full Weekend Series</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT AUTHOR SECTION -->
+  <section id="about" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-5 relative">
+        <div class="aspect-[4/5] bg-gradient-to-tr from-[#0e1423] to-brand-dark rounded-3xl overflow-hidden border border-slate-900 shadow-2xl flex items-center justify-center p-8 text-center">
+          <div class="space-y-4">
+            <div class="w-20 h-20 bg-brand-accent/10 border border-brand-accent/20 rounded-full mx-auto flex items-center justify-center text-brand-accent">
+              <i data-lucide="user-check" class="w-10 h-10"></i>
+            </div>
+            <h4 class="text-white font-serif font-bold text-lg">Pastor Andrew C. Phiri</h4>
+            <p class="text-gray-400 text-xs">Primary Research Curator, Reflections on Faith</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 space-y-6">
+        <span class="text-brand-accent text-sm font-bold tracking-widest uppercase">PORTAL PROPRIETOR</span>
+        <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white">Evaluating Scriptural Evidence Scientifically</h2>
+        <p class="text-gray-400 leading-relaxed font-light">
+          Pastor Andrew C. Phiri oversees and develops the systematic exegesis projects displayed across Reflections on Faith. Grounded in systematic study methodologies, these resources aim to help students of the Bible trace ancient paths of scriptural development using analytical rigor.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-black py-12 border-t border-gray-950 text-gray-500 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p>&copy; 2026 Reflections on Faith. Authored & Curated by Pastor Andrew C. Phiri.</p>
+      <div class="flex gap-4">
+        <a href="#sermons" class="hover:text-brand-accent transition-all">Sermons</a>
+        <a href="#publications" class="hover:text-brand-accent transition-all">Books</a>
+        <a href="#prayer-wall" class="hover:text-brand-accent transition-all">Prayer Wall</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- PERSISTENT FLOATING AUDIO PLAYBAR -->
+  <div id="media-deck" class="fixed bottom-4 left-4 right-4 bg-slate-950/95 border border-brand-accent/25 px-5 py-4 rounded-2xl shadow-2xl z-50 transform translate-y-[200%] transition-transform duration-300 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      
+      <!-- Audio Metadata Info -->
+      <div class="flex items-center gap-3 w-full md:w-1/3">
+        <!-- Equalizer animation -->
+        <div id="player-equalizer" class="w-8 h-8 bg-brand-accent/15 border border-brand-accent/25 rounded-lg flex items-center justify-center gap-[2px] p-2 flex-shrink-0 hidden">
+          <div class="eq-bar"></div>
+          <div class="eq-bar"></div>
+          <div class="eq-bar"></div>
+          <div class="eq-bar"></div>
+        </div>
+        <div id="player-icon" class="w-8 h-8 bg-brand-accent/10 border border-brand-accent/20 rounded-lg flex items-center justify-center text-brand-accent flex-shrink-0">
+          <i data-lucide="headphones" class="w-4 h-4"></i>
+        </div>
+        <div class="overflow-hidden">
+          <span id="playing-title" class="block text-white text-sm font-semibold truncate">Not Playing</span>
+          <span id="playing-subtitle" class="block text-gray-400 text-xs truncate">Reflections on Faith Exegesis</span>
+        </div>
+      </div>
+
+      <!-- Playback Progress Sliders -->
+      <div class="flex flex-col items-center gap-1.5 w-full md:w-1/2">
+        <div class="flex items-center gap-5">
+          <button onclick="skipTime(-15)" class="text-gray-400 hover:text-white transition-all" title="Rewind 15s"><i data-lucide="rotate-ccw" class="w-4.5 h-4.5"></i></button>
+          <button onclick="toggleGlobalPlay()" id="global-play-btn" class="w-9 h-9 bg-brand-accent text-brand-dark rounded-full flex items-center justify-center shadow-md hover:scale-105 transition-transform">
+            <i data-lucide="play" class="w-4 h-4 fill-brand-dark"></i>
+          </button>
+          <button onclick="skipTime(15)" class="text-gray-400 hover:text-white transition-all" title="Fast Forward 15s"><i data-lucide="rotate-cw" class="w-4.5 h-4.5"></i></button>
+        </div>
+        
+        <div class="flex items-center gap-3 w-full text-[10px] text-gray-500">
+          <span id="player-time">0:00</span>
+          <div class="flex-1 bg-slate-900 h-1.5 rounded-full relative overflow-hidden cursor-pointer" onclick="seekProgress(event)" id="timeline-container">
+            <div id="player-progress-bar" class="absolute left-0 top-0 bottom-0 bg-brand-accent w-0"></div>
+          </div>
+          <span id="player-duration">0:00</span>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="flex items-center justify-end gap-3 w-full md:w-1/4">
+        <div class="flex items-center gap-2 text-gray-400">
+          <i data-lucide="volume-2" class="w-4 h-4"></i>
+          <input type="range" min="0" max="1" step="0.1" value="0.8" oninput="adjustVolume(this.value)" class="w-16 accent-brand-accent bg-slate-900 h-1 rounded-lg outline-none">
+        </div>
+        <button onclick="closePlayer()" class="text-gray-400 hover:text-white p-2">
+          <i data-lucide="x-circle" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BOOK PREVIEW MODAL -->
+  <div id="book-modal" class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300 backdrop-blur-sm">
+    <div class="bg-brand-card border border-slate-800 rounded-3xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl relative overflow-hidden">
+      <div class="p-6 border-b border-gray-900 flex justify-between items-center">
+        <div>
+          <span class="text-[10px] text-brand-accent uppercase tracking-widest font-bold">DIGITAL STUDY PREVIEW</span>
+          <h3 id="modal-book-title" class="text-white font-serif text-lg sm:text-xl font-bold mt-1">Book Title</h3>
+        </div>
+        <button onclick="closeBookModal()" class="text-gray-400 hover:text-white p-1">
+          <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+      </div>
+      <div id="modal-book-content" class="p-6 overflow-y-auto space-y-4 text-sm leading-relaxed text-gray-300">
+        <!-- Content loaded dynamically -->
+      </div>
+      <div class="p-6 border-t border-gray-900 bg-brand-dark flex justify-end gap-3">
+        <button onclick="closeBookModal()" class="bg-slate-800 text-gray-300 hover:bg-slate-700 px-5 py-2.5 rounded-xl text-xs font-semibold">
+          Close Preview
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESOURCES BACKDROP POPUP -->
+  <div id="resource-modal" class="fixed inset-0 bg-black/85 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="bg-brand-card border border-slate-800 rounded-3xl max-w-md w-full p-6 space-y-6">
+      <div class="flex justify-between items-start">
+        <div>
+          <span class="text-xs text-brand-accent font-bold uppercase tracking-wider">MEDIA SOURCE DIRECTORY</span>
+          <h4 id="resource-sermon-title" class="text-white font-serif text-lg font-bold mt-1">Study Outline Title</h4>
+        </div>
+        <button onclick="closeResourceModal()" class="text-gray-400 hover:text-white p-1">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="space-y-3" id="resource-modal-container">
+        <!-- Link targets -->
+      </div>
+    </div>
+  </div>
+
+  <!-- FIREBASE MODULE & REAL-TIME DRIVER -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, doc, collection, query, addDoc, updateDoc, increment, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    const appId = 'reflections-on-faith-portal-testing';
+    const firebaseConfig = {
+      apiKey: "mock-placeholder-key",
+      authDomain: "mock-auth-domain",
+      projectId: "mock-project-id",
+      storageBucket: "mock-storage-bucket",
+      messagingSenderId: "mock-messaging-id",
+      appId: "mock-app-id"
+    };
+
+    let app, db, auth;
+    let isConnectedToFirestore = false;
+
+    try {
+      app = initializeApp(firebaseConfig);
+      db = getFirestore(app);
+      auth = getAuth(app);
+    } catch(err) {
+      console.warn("Falling back to local simulation:", err);
+    }
+
+    function timeAgo(date) {
+      const seconds = Math.floor((new Date() - date) / 1000);
+      let interval = Math.floor(seconds / 31536000);
+      if (interval >= 1) return interval + " years ago";
+      interval = Math.floor(seconds / 2592000);
+      if (interval >= 1) return interval + " months ago";
+      interval = Math.floor(seconds / 86400);
+      if (interval >= 1) return interval + " days ago";
+      interval = Math.floor(seconds / 3600);
+      if (interval >= 1) return interval + " hours ago";
+      interval = Math.floor(seconds / 60);
+      if (interval >= 1) return interval + " minutes ago";
+      return "just now";
+    }
+
+    window.addEventListener('DOMContentLoaded', async () => {
+      // Connect check
+      if (db && auth && firebaseConfig.apiKey !== "mock-placeholder-key") {
+        try {
+          let userCred = await signInAnonymously(auth);
+          if (userCred && userCred.user) {
+            document.getElementById('sync-status').textContent = "Database Connected";
+            isConnectedToFirestore = true;
+            listenForPrayers();
+          }
+        } catch (e) {
+          console.warn("Using sandbox mode (No Firebase credentials detected).");
+          loadLocalSimulatedPrayers();
+        }
+      } else {
+        loadLocalSimulatedPrayers();
+      }
+    });
+
+    function getPrayersCollection() {
+      return collection(db, 'artifacts', appId, 'public', 'data', 'prayers');
+    }
+
+    function listenForPrayers() {
+      const prayersRef = getPrayersCollection();
+      const q = query(prayersRef);
+      
+      onSnapshot(q, (snapshot) => {
+        let prayersList = [];
+        snapshot.forEach((doc) => {
+          prayersList.push({ id: doc.id, ...doc.data() });
+        });
+        
+        prayersList.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+        renderPrayers(prayersList);
+      }, (error) => {
+        loadLocalSimulatedPrayers();
+      });
+    }
+
+    function renderPrayers(prayers) {
+      const container = document.getElementById('prayer-requests-container');
+      if (prayers.length === 0) {
+        container.innerHTML = `<div class="text-center py-12 text-gray-500 text-sm">No prayer submissions published yet. Be the first to start.</div>`;
+        return;
+      }
+
+      container.innerHTML = prayers.map(p => {
+        const initials = p.name ? p.name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2) : 'RF';
+        const displayTime = p.timestamp ? timeAgo(new Date(p.timestamp)) : "recently";
+        const hasActiveVote = localStorage.getItem(`prayed_${p.id}`) === 'true';
+        const heartClass = hasActiveVote ? 'fill-rose-400' : 'fill-rose-400/10';
+
+        return `
+          <div class="bg-[#0c0f1b]/80 border border-slate-900 p-5 rounded-2xl flex items-start gap-4 transition-all hover:border-slate-800">
+            <div class="w-10 h-10 rounded-full bg-brand-accent/15 border border-brand-accent/30 flex-shrink-0 flex items-center justify-center text-sm font-bold text-brand-accent">
+              ${initials}
+            </div>
+            <div class="flex-1 space-y-2">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h5 class="text-white font-semibold text-sm">${p.name}</h5>
+                  <span class="text-xs text-gray-500">${p.location}</span>
+                </div>
+                <span class="text-[10px] text-gray-500">${displayTime}</span>
+              </div>
+              <p class="text-gray-300 text-sm leading-relaxed">${p.content}</p>
+              <button onclick="window.intercedePrayer('${p.id}')" class="flex items-center gap-1.5 text-xs text-rose-400 hover:text-rose-300 transition-colors bg-rose-950/10 border border-rose-950/30 hover:border-rose-500/40 px-3.5 py-1.5 rounded-full font-medium">
+                <i data-lucide="heart" class="w-3.5 h-3.5 ${heartClass}"></i> Joined Intercession (<span class="prayer-count">${p.prayersCount || 0}</span>)
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+      
+      lucide.createIcons();
+    }
+
+    async function submitPrayerRequest(event) {
+      event.preventDefault();
+      const name = document.getElementById('prayer-name').value;
+      const location = document.getElementById('prayer-location').value;
+      const content = document.getElementById('prayer-content').value;
+
+      if (!name || !location || !content) return;
+
+      const newPost = {
+        name: name,
+        location: location,
+        content: content,
+        timestamp: Date.now(),
+        prayersCount: 0
+      };
+
+      if (isConnectedToFirestore && db) {
+        try {
+          await addDoc(getPrayersCollection(), newPost);
+          document.getElementById('prayer-form').reset();
+        } catch (err) {
+          saveLocalSimulatedPrayer(newPost);
+        }
+      } else {
+        saveLocalSimulatedPrayer(newPost);
+      }
+    }
+
+    async function intercedePrayer(id) {
+      if (localStorage.getItem(`prayed_${id}`) === 'true') {
+        return;
+      }
+
+      localStorage.setItem(`prayed_${id}`, 'true');
+
+      if (isConnectedToFirestore && db) {
+        try {
+          const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'prayers', id);
+          await updateDoc(docRef, {
+            prayersCount: increment(1)
+          });
+        } catch (err) {
+          updateLocalPrayerCount(id);
+        }
+      } else {
+        updateLocalPrayerCount(id);
+      }
+    }
+
+    const LOCAL_PRAYERS_KEY = "reflections_prayers_local";
+    function loadLocalSimulatedPrayers() {
+      let locals = localStorage.getItem(LOCAL_PRAYERS_KEY);
+      if (!locals) {
+        const defaults = [
+          {
+            id: "local-1",
+            name: "Brother Michael S.",
+            location: "Kabwe Assembly",
+            content: "Please stand with us in prayer for the upcoming weekend seminar on the covenants of justification and grace.",
+            timestamp: Date.now() - 3600000 * 2,
+            prayersCount: 14
+          },
+          {
+            id: "local-2",
+            name: "Sister Grace M.",
+            location: "Lusaka HQ",
+            content: "Interceding for the global ministry operations and distribution of Pastor Andrew's design booklets.",
+            timestamp: Date.now() - 3600000 * 24,
+            prayersCount: 29
+          }
+        ];
+        localStorage.setItem(LOCAL_PRAYERS_KEY, JSON.stringify(defaults));
+        locals = JSON.stringify(defaults);
+      }
+      renderPrayers(JSON.parse(locals));
+    }
+
+    function saveLocalSimulatedPrayer(item) {
+      const current = JSON.parse(localStorage.getItem(LOCAL_PRAYERS_KEY) || "[]");
+      item.id = "local-" + Date.now();
+      current.unshift(item);
+      localStorage.setItem(LOCAL_PRAYERS_KEY, JSON.stringify(current));
+      document.getElementById('prayer-form').reset();
+      renderPrayers(current);
+    }
+
+    function updateLocalPrayerCount(id) {
+      const current = JSON.parse(localStorage.getItem(LOCAL_PRAYERS_KEY) || "[]");
+      const found = current.find(p => p.id === id);
+      if (found) {
+        found.prayersCount = (found.prayersCount || 0) + 1;
+        localStorage.setItem(LOCAL_PRAYERS_KEY, JSON.stringify(current));
+        renderPrayers(current);
+      }
+    }
+
+    window.submitPrayerRequest = submitPrayerRequest;
+    window.intercedePrayer = intercedePrayer;
+  </script>
+
+  <!-- NATIVE AUDIO DRIVER SCRIPT -->
+  <script>
+    const sermonDatabase = {
+      'sermon-1': {
+        title: "The Gospel: The Resurrection Seal (Part C)",
+        subtitle: "Pastor Andrew C. Phiri | June 14, 2026",
+        audioUrl: "https://andrewcphiri.com/wp-content/uploads/2026/06/The-Gospel-of-Jesus-Christ-The-Resurrection-Seal-part-c.mp3",
+        duration: "42:15"
+      },
+      'sermon-2': {
+        title: "The Resurrection of Jesus Christ (Part A)",
+        subtitle: "Pastor Andrew C. Phiri | June 10, 2026",
+        audioUrl: "https://andrewcphiri.com/wp-content/uploads/2026/06/The-Gospel-of-Jesus-Christ-The-Resurrection-of-Jesus-Christ-part-a1.mp3",
+        duration: "38:40"
+      },
+      'sermon-3': {
+        title: "Moses and Leadership: Strongholds & Discord (Part 6)",
+        subtitle: "Pastor Andrew C. Phiri | April 12, 2026",
+        audioUrl: "https://andrewcphiri.com/wp-content/uploads/2026/04/Moses-and-Leadership-P6.mp3",
+        duration: "54:10"
+      },
+      'sermon-4': {
+        title: "Contending with Mercy: For God so Loved the World (Part 6)",
+        subtitle: "Pastor Andrew C. Phiri | May 24, 2026",
+        audioUrl: "https://andrewcphiri.com/wp-content/uploads/2026/05/Contending-with-Gods-Mercy-P6-The-Gospel-of-Jesus-Christ-b-1.mp3",
+        duration: "49:30"
+      }
+    };
+
+    const bookDatabase = {
+      'book-1': {
+        title: "Why I Believe God Exists",
+        content: `
+          <p class="font-serif text-brand-accent font-bold mb-1">Chapter 1 Preview:</p>
+          <p class="mb-4 text-xs text-gray-500">Evaluating biological design vs random chance distribution.</p>
+          <p class="mb-3">"When evaluating cellular operations under systematic mathematical criteria, the metrics imply explicit instruction. Chaos cannot compile instructions without structured presets."</p>
+          <p class="mb-3">"This volume details how thermodynamic restrictions and cellular coding patterns converge to support creation parameters rather than spontaneous construction."</p>
+        `
+      },
+      'book-2': {
+        title: "Hearing a Voice & The Voice",
+        content: `
+          <p class="font-serif text-indigo-400 font-bold mb-1">Introduction Preview:</p>
+          <p class="mb-4 text-xs text-gray-500">The apostolic check of internal impressions.</p>
+          <p class="mb-3">"Many searchers run after internal voices or psychological prompts, classifying them as immediate divine instructions. The scriptures demonstrate that God's true voice always aligns with historical, apostolic precedents."</p>
+        `
+      },
+      'book-3': {
+        title: "The Joy of Marriage",
+        content: `
+          <p class="font-serif text-rose-400 font-bold mb-1">Chapter 2 Preview:</p>
+          <p class="mb-4 text-xs text-gray-500">Relational architecture and covenant priorities.</p>
+          <p class="mb-3">"We examine the structural parameters of marriage not as a contract of emotional convenience, but as a sovereign, lifelong covenant. Unpacking guidelines that withstand pressure and external trial."</p>
+        `
+      }
+    };
+
+    const globalAudio = new Audio();
+    globalAudio.volume = 0.8;
+    let playingId = null;
+
+    globalAudio.addEventListener('timeupdate', () => {
+      if (globalAudio.duration) {
+        const current = globalAudio.currentTime;
+        const total = globalAudio.duration;
+        const percent = (current / total) * 100;
+        document.getElementById('player-progress-bar').style.width = `${percent}%`;
+
+        const curMin = Math.floor(current / 60);
+        const curSec = Math.floor(current % 60);
+        document.getElementById('player-time').textContent = `${curMin}:${curSec < 10 ? '0' : ''}${curSec}`;
+      }
+    });
+
+    globalAudio.addEventListener('loadedmetadata', () => {
+      const total = globalAudio.duration;
+      const totMin = Math.floor(total / 60);
+      const totSec = Math.floor(total % 60);
+      document.getElementById('player-duration').textContent = `${totMin}:${totSec < 10 ? '0' : ''}${totSec}`;
+    });
+
+    globalAudio.addEventListener('ended', () => {
+      playingId = null;
+      updatePlayerInterface(false);
+    });
+
+    function playSermon(sermonId) {
+      const sermon = sermonDatabase[sermonId];
+      if (!sermon) return;
+
+      const mediaDeck = document.getElementById('media-deck');
+      
+      if (playingId === sermonId) {
+        toggleGlobalPlay();
+        return;
+      }
+
+      playingId = sermonId;
+      globalAudio.src = sermon.audioUrl;
+      
+      document.getElementById('playing-title').textContent = sermon.title;
+      document.getElementById('playing-subtitle').textContent = sermon.subtitle;
+      document.getElementById('player-time').textContent = "0:00";
+      document.getElementById('player-duration').textContent = sermon.duration;
+
+      mediaDeck.classList.remove('translate-y-[200%]');
+      
+      globalAudio.play()
+        .then(() => updatePlayerInterface(true))
+        .catch(err => {
+          console.warn("Autoplay blocked, waiting for user click:", err);
+          updatePlayerInterface(false);
+        });
+    }
+
+    function toggleGlobalPlay() {
+      if (!playingId) return;
+      
+      if (globalAudio.paused) {
+        globalAudio.play().then(() => updatePlayerInterface(true));
+      } else {
+        globalAudio.pause();
+        updatePlayerInterface(false);
+      }
+    }
+
+    function updatePlayerInterface(isPlaying) {
+      const playBtn = document.getElementById('global-play-btn');
+      const equalizer = document.getElementById('player-equalizer');
+      const icon = document.getElementById('player-icon');
+
+      if (isPlaying) {
+        playBtn.innerHTML = `<i data-lucide="pause" class="w-4 h-4 fill-brand-dark"></i>`;
+        equalizer.classList.remove('hidden');
+        icon.classList.add('hidden');
+      } else {
+        playBtn.innerHTML = `<i data-lucide="play" class="w-4 h-4 fill-brand-dark"></i>`;
+        equalizer.classList.add('hidden');
+        icon.classList.remove('hidden');
+      }
+      lucide.createIcons();
+    }
+
+    function skipTime(seconds) {
+      if (!playingId) return;
+      globalAudio.currentTime += seconds;
+    }
+
+    function seekProgress(event) {
+      if (!playingId || !globalAudio.duration) return;
+      const timeline = document.getElementById('timeline-container');
+      const rect = timeline.getBoundingClientRect();
+      const clickX = event.clientX - rect.left;
+      const percent = clickX / rect.width;
+      globalAudio.currentTime = percent * globalAudio.duration;
+    }
+
+    function adjustVolume(value) {
+      globalAudio.volume = value;
+    }
+
+    function closePlayer() {
+      globalAudio.pause();
+      playingId = null;
+      updatePlayerInterface(false);
+      document.getElementById('media-deck').classList.add('translate-y-[200%]');
+    }
+
+    function openBookModal(bookId) {
+      const book = bookDatabase[bookId];
+      if (!book) return;
+      document.getElementById('modal-book-title').textContent = book.title;
+      document.getElementById('modal-book-content').innerHTML = book.content;
+
+      const modal = document.getElementById('book-modal');
+      modal.classList.remove('pointer-events-none', 'opacity-0');
+      modal.classList.add('opacity-100');
+    }
+
+    function closeBookModal() {
+      const modal = document.getElementById('book-modal');
+      modal.classList.add('pointer-events-none', 'opacity-0');
+      modal.classList.remove('opacity-100');
+    }
+
+    function showResources(sermonId) {
+      const sermon = sermonDatabase[sermonId];
+      if (!sermon) return;
+
+      document.getElementById('resource-sermon-title').textContent = sermon.title;
+      const container = document.getElementById('resource-modal-container');
+
+      container.innerHTML = `
+        <a href="${sermon.audioUrl}" target="_blank" class="flex items-center justify-between p-3.5 bg-brand-dark hover:bg-slate-800 rounded-xl border border-slate-800 transition-all text-xs font-semibold text-white">
+          <span class="flex items-center gap-2.5"><i data-lucide="headphones" class="text-brand-accent w-4 h-4"></i> Stream Direct MP3 File</span>
+          <i data-lucide="external-link" class="w-4 h-4 text-gray-500"></i>
+        </a>
+        <a href="${sermon.audioUrl}" download class="flex items-center justify-between p-3.5 bg-brand-dark hover:bg-slate-800 rounded-xl border border-slate-800 transition-all text-xs font-semibold text-white">
+          <span class="flex items-center gap-2.5"><i data-lucide="download" class="text-brand-accent w-4 h-4"></i> Download Direct MP3 file</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-gray-500"></i>
+        </a>
+      `;
+
+      const modal = document.getElementById('resource-modal');
+      modal.classList.remove('pointer-events-none', 'opacity-0');
+      modal.classList.add('opacity-100');
+      lucide.createIcons();
+    }
+
+    function closeResourceModal() {
+      const modal = document.getElementById('resource-modal');
+      modal.classList.add('pointer-events-none', 'opacity-0');
+      modal.classList.remove('opacity-100');
+    }
+
+    function filterCategory(category) {
+      const buttons = document.querySelectorAll('.category-btn');
+      buttons.forEach(btn => {
+        btn.className = "category-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-slate-900 border border-slate-800 text-gray-400 hover:bg-slate-800 hover:text-white";
+      });
+
+      const activeBtn = document.getElementById(`filter-${category}`);
+      if (activeBtn) {
+        activeBtn.className = "category-btn active px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-brand-accent text-brand-dark shadow-md";
+      }
+
+      const cards = document.querySelectorAll('.sermon-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const icon = document.getElementById('menu-icon');
+      if (menu.classList.contains('hidden')) {
+        menu.classList.remove('hidden');
+        icon.setAttribute('data-lucide', 'x');
+      } else {
+        menu.classList.add('hidden');
+        icon.setAttribute('data-lucide', 'menu');
+      }
+      lucide.createIcons();
+    }
+
+    window.playSermon = playSermon;
+    window.toggleGlobalPlay = toggleGlobalPlay;
+    window.skipTime = skipTime;
+    window.seekProgress = seekProgress;
+    window.adjustVolume = adjustVolume;
+    window.closePlayer = closePlayer;
+    window.openBookModal = openBookModal;
+    window.closeBookModal = closeBookModal;
+    window.showResources = showResources;
+    window.closeResourceModal = closeResourceModal;
+    window.filterCategory = filterCategory;
+    window.toggleMobileMenu = toggleMobileMenu;
+  </script>
+</body>
+</html>
